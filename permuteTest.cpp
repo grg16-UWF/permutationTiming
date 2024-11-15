@@ -388,7 +388,7 @@ int main() {
 
   
   float floats[arrSize] = { 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 };
-  cout << "Floats";
+  cout << "Floats, " << sizeof(float);
 	for(int i = 0; i < numTests; i++ ) {
 		cout << ", " << timeFloats(floats, arrSize, totalPerms);
 	}
@@ -396,7 +396,7 @@ int main() {
 
 
   double doubles[arrSize] = { 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 };
-  cout << "Doubles";
+  cout << "Doubles, " << sizeof(double);
 	for(int i = 0; i < numTests; i++ ) {
 		cout << ", " << timeDoubles(doubles, arrSize, totalPerms);
 	}
@@ -404,7 +404,7 @@ int main() {
 
 
   int ints[arrSize] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  cout << "Ints";
+  cout << "Ints, " << sizeof(int);
 	for(int i = 0; i < numTests; i++ ) {
 		cout << ", " << timeInts(ints, arrSize, totalPerms);
 	}
@@ -412,7 +412,7 @@ int main() {
   
 
   long longs[arrSize] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  cout << "Longs";
+  cout << "Longs, " << sizeof(long);
 	for(int i = 0; i < numTests; i++ ) {
 		cout << ", " << timeLongs(longs, arrSize, totalPerms);
 	}
@@ -420,7 +420,7 @@ int main() {
 
 
   unsigned unsigneds[arrSize] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  cout << "Unsigneds";
+  cout << "Unsigneds, " << sizeof(unsigned);
 	for(int i = 0; i < numTests; i++ ) {
 		cout << ", " << timeUnsigneds(unsigneds, arrSize, totalPerms);
 	}
@@ -428,10 +428,11 @@ int main() {
 
 
   char chars[arrSize] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  cout << "Chars";
+  cout << "Chars, " << sizeof(char);
 	for(int i = 0; i < numTests; i++ ) {
 		cout << ", " << timeChars(chars, arrSize, totalPerms);
 	}
 	cout << "\n";
+
   return 0;
 }
