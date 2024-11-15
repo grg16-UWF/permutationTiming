@@ -252,6 +252,52 @@ void nextPermutationUnsigned( unsigned* arr, const int size ) {
 }
 
 
+void swapIndexChar( char* arr, const int size, int i1, int i2 ) {
+	// cout << "swapping\n";
+	if( size == 0 ) { return; }
+
+	if ( i1 <= -1 ) {
+		i1 = size + i1;
+	}
+	if ( i2 <= -1 ) {
+		i2 = size + i2;
+	}
+	char temp = arr[i1];
+
+	arr[i1] = arr[i2];
+	arr[i2] = temp;
+	// cout << "temp is " << temp << "\n";
+}
+
+void nextPermutationChar( char* arr, const int size ) {
+	// cout << "permuting\n";
+	if( size == 0 ) { return; }
+	int m, k, p ,q;
+	m = size - 2;
+	while( arr[m] > arr[m+1]) {
+		m--;
+		if( m == -1 ) {
+			break;
+		}
+	}
+	
+	k = size - 1;
+	while( m >= 0 && arr[m] > arr[k] ) {
+		k--;
+	}
+	
+	swapIndexChar(arr, size, m, k);
+
+	p = m + 1;
+	q = size - 1;
+	while( p < q ) {
+		swapIndexChar(arr, size, p, q);
+		p++;
+		q--;
+	}
+}
+
+
 
 int timeDoubles( double* arr, const int size, const int totalPerms ) {
   Timer timer;
@@ -318,6 +364,19 @@ int timeUnsigneds( unsigned* arr, const int size, const int totalPerms ) {
 	return timer.report();
 }
 
+int timeChars( char* arr, const int size, const int totalPerms ) {
+  Timer timer;
+	timer.start();
+
+  long numPerms = 0;
+	do {
+    nextPermutationChar( arr, size );
+    numPerms++;
+  } while( numPerms < totalPerms );
+
+	return timer.report();
+}
+
 
 
 int main() {
@@ -364,6 +423,14 @@ int main() {
   cout << "Unsigneds";
 	for(int i = 0; i < numTests; i++ ) {
 		cout << ", " << timeUnsigneds(unsigneds, arrSize, totalPerms);
+	}
+	cout << "\n";
+
+
+  char chars[arrSize] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  cout << "Chars";
+	for(int i = 0; i < numTests; i++ ) {
+		cout << ", " << timeChars(chars, arrSize, totalPerms);
 	}
 	cout << "\n";
   return 0;
