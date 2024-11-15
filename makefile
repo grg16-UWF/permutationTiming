@@ -5,7 +5,7 @@
 # makefile
 
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++17 -Wall
 
 OBJS = Timer.o
 
